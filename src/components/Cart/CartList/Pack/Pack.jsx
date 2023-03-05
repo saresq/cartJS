@@ -18,13 +18,15 @@ const Pack = ({ product }) => {
   }, [productQuantity]);
 
   const handleQuantityChange = (e) => {
-    setProductQuantity(parseInt(e.target.value));
+    const value = parseInt(e.target.value);
+    let qty = isNaN(value) ? 0 : value;
+    setProductQuantity(qty);
   };
 
   const renderItems = () => {
-    return items.map((i) => {
+    return items.map((i, index) => {
       return (
-        <S.Item>
+        <S.Item key={index}>
           <S.ItemTitle>{i.title}: </S.ItemTitle>
           <S.ItemDescription>{i.description}</S.ItemDescription>
         </S.Item>
@@ -54,7 +56,7 @@ const Pack = ({ product }) => {
               value={productQuantity}
               onChange={handleQuantityChange}
             />
-            <S.QuantityIcon src={ArrowIcon} width="8" />
+            <S.QuantityIcon src={ArrowIcon} width="8" height="8" />
           </S.Quantity>
           <S.Items>{renderItems()}</S.Items>
           <S.Actions>

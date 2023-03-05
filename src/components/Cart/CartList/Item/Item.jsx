@@ -19,7 +19,9 @@ const Item = ({ product }) => {
   }, [productQuantity]);
 
   const handleQuantityChange = (e) => {
-    setProductQuantity(parseInt(e.target.value));
+    const value = parseInt(e.target.value);
+    let qty = isNaN(value) ? 0 : value;
+    setProductQuantity(qty);
   };
 
   const getTotal = () => {
@@ -40,7 +42,7 @@ const Item = ({ product }) => {
               value={productQuantity}
               onChange={handleQuantityChange}
             />
-            <S.QuantityIcon src={ArrowIcon} width="8" />
+            <S.QuantityIcon src={ArrowIcon} width="8" height="8" />
           </S.Quantity>
           <S.Remove onClick={() => handleRemoveProduct()}>
             <S.RemoveIcon src={TrashIcon} width="16" height="16" />

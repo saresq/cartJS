@@ -1,5 +1,5 @@
 # Ignore node_modules directory and all of its contents
-/node_modules
+node_modules
 
 # Ignore build output directory
 /build
